@@ -8,7 +8,6 @@
 - [Code Overview](#code-overview)
 - [Features](#features)
 - [Usage](#usage)
-- [Output](#output)
 - [License](#license)
 
 ---
@@ -137,21 +136,6 @@ The system includes robust modules that streamline ticket sales, trip scheduling
    - Open the project in **Visual Studio**.
    - Build the solution and run either the web or desktop application.
 
----
-
-## 🖼️ Output
-
-### **Ticket Sales Interface**
-Allows operators to manage ticket bookings efficiently.
-![Ticket Sales](https://via.placeholder.com/800x400?text=Ticket+Sales+Interface)
-
-### **Trip Scheduling Interface**
-Dynamic scheduling tool for managing routes and times.
-![Trip Scheduling](https://via.placeholder.com/800x400?text=Trip+Scheduling+Interface)
-
-### **Driver Management Dashboard**
-Provides tools for assigning drivers and tracking their schedules.
-![Driver Management](https://via.placeholder.com/800x400?text=Driver+Management+Dashboard)
 
 ---
 
