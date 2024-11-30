@@ -1,136 +1,160 @@
-MaterialSkin for .NET WinForms
-=====================
 
-Theming .NET WinForms, C# or VB.Net, to Google's Material Design Principles.
+# Bus Ticket Sales-Time Tracking Automation
 
-<a href="https://www.youtube.com/watch?v=A8osVM_SXlg" target="_blank">![alt tag](http://i.imgur.com/JAttoOo.png)</a>
+## 📖 Table of Contents
 
-*High quality images can be found at the bottom of this page.*
-
----
-
-#### Current state of the MaterialSkin components
-Component | Supported | Dark & light version | Disabled mode | Animated
---- | --- | --- | --- | ---
-Checkbox | Yes | Yes | Yes | Yes 
-Divider | Yes | Yes | N/A | N/A 
-Flat Button | Yes | Yes | Yes | Yes 
-Label | Yes | Yes | N/A | N/A
-Radio Button | Yes | Yes | Yes | Yes
-Raised Button | Yes | Yes | Yes | Yes 
-Single-line text field | Yes | Yes | No | Yes
-TabControl | Yes | N/A | N/A | Yes
-ContextMenuStrip | Yes | Yes | Yes | Yes
-ListView | Yes | Yes | No | No
-ProgressBar | Yes | Yes | No | No 
-FloatingActionButton | No | No | No | No
-Dialogs | No | No | No | No
-Switch | No | No | No | No
-More... | No | No | No | No
+- [Introduction](#introduction)
+- [Technologies](#technologies)
+- [Code Overview](#code-overview)
+- [Features](#features)
+- [Usage](#usage)
+- [Output](#output)
+- [License](#license)
 
 ---
 
-#### Implementing MaterialSkin in your application
+## 📚 Introduction
 
-**1. Add the library to your project**
+The **Bus Ticket Sales-Time Tracking Automation** project is a comprehensive solution designed for bus companies to manage and automate their operations. This dual-platform project features:
 
-  You can do this on multiple ways. The easiest way would be adding the [NuGet Package](https://www.nuget.org/packages/MaterialSkin/). Right click on your project and click 'Manage NuGet Packages...'. Search for 'MaterialSkin' and click on install. Once installed the library will be included in your project references. (Or install it through the package manager console: PM> Install-Package MaterialSkin)
+1. **A Web Application (ASP.NET MVC 5)**: For remote access and operations.
+2. **A Desktop Application (C# Forms App)**: For local, high-performance tasks.
 
-Another way of doing this step would be cloning the project from GitHub, compiling the library yourself and adding it as a reference.
-  
-**2. Add the MaterialSkin components to your ToolBox**
-
-  If you have installed the NuGet package, the MaterialSkin.dll file should be in the folder //bin/Debug. Simply drag the MaterialSkin.dll file into your IDE's ToolBox and all the controls should be added there.
-  
-**3. Inherit from MaterialForm**
-
-  Open the code behind your Form you wish to skin. Make it inherit from MaterialForm rather than Form. Don't forget to put the library in your imports, so it can find the MaterialForm class!
-  
-  C# (Form1.cs)
-  ```cs
-  public partial class Form1 : MaterialForm
-  ```
-  
-  VB.NET (Form1.Designer.vb)
-  ```vb
-  Partial Class Form1
-    Inherits MaterialSkin.Controls.MaterialForm
-  ```
-  
-**4. Initialize your colorscheme**
-
-  Set your preferred colors & theme. Also add the form to the manager so it keeps updated if the color scheme or theme changes later on.
-
-C# (Form1.cs)
-  ```cs
-  public Form1()
-  {
-      InitializeComponent();
-
-      var materialSkinManager = MaterialSkinManager.Instance;
-      materialSkinManager.AddFormToManage(this);
-      materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-      materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-  }
-  ```
-
-VB.NET (Form1.vb)
-```vb
-Imports MaterialSkin
-
-Public Class Form1
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim SkinManager As MaterialSkinManager = MaterialSkinManager.Instance
-        SkinManager.AddFormToManage(Me)
-        SkinManager.Theme = MaterialSkinManager.Themes.LIGHT
-        SkinManager.ColorScheme = New ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE)
-    End Sub
-End Class
-```
+The system includes robust modules that streamline ticket sales, trip scheduling, time tracking, and driver management. These functionalities ensure the operational efficiency and scalability of bus companies.
 
 ---
 
-#### Material Design in WPF
+## 🛠️ Technologies
 
-If you love .NET and Material Design, you should definitely check out [Material Design Xaml Toolkit](https://github.com/ButchersBoy/MaterialDesignInXamlToolkit) by ButchersBoy. It's a similar project but for WPF instead of WinForms.
+### **Platforms**
+- **Web Application**: ASP.NET MVC 5.
+- **Desktop Application**: C# Forms App (.NET Framework).
+
+### **Backend**
+- **C#**: Used for business logic and processing.
+- **Entity Framework**: For database interaction.
+- **Dapper ORM**: For high-performance data queries.
+
+### **Database**
+- **Microsoft SQL Server**: Stores all operational data securely.
+
+### **API & Web Services**
+- **Web API**: Facilitates communication between applications.
+- **RESTful Services**: Ensures interoperability and scalability.
+
+### **UI/UX**
+- **HTML5**, **CSS3**, **Material CSS**: Provides a responsive and clean user interface.
+- **Responsive Design**: Ensures usability across devices.
+
+### **Design Patterns**
+- Creational: Singleton, Factory Method, Abstract Factory, Builder.
+- Structural: Adapter, Facade, Proxy, Decorator.
+- Behavioral: Mediator, Command, Iterator.
 
 ---
 
+## 📂 Code Overview
 
-#### State of the project
+### **Web Application**
 
-This project is no longer under active development. Though, contributions are still welcome and the community will likely still help if you open an issue.
+1. **Models**:
+   - Represent database entities such as tickets, trips, passengers, and drivers.
+   - Used by both Entity Framework and Dapper for data interaction.
+
+2. **Controllers**:
+   - Handle business logic, such as trip scheduling, ticket sales, and invoice generation.
+   - Manage data exchange between the user interface and the database.
+
+3. **Views**:
+   - Razor-based UI components provide a dynamic and responsive interface.
+   - Includes ticket management, scheduling views, and administrative tools.
+
+### **Desktop Application**
+
+1. **Forms**:
+   - GUI forms for local operations such as ticket sales, trip monitoring, and driver assignment.
+   - Built for performance and simplicity.
+
+2. **Services**:
+   - Handles data retrieval and synchronization with the central SQL Server database.
+   - Includes modules for managing invoices and reporting.
+
+3. **Multithreading**:
+   - Ensures real-time updates, especially in time-critical operations like trip tracking.
 
 ---
 
-#### Contact
+## 🔧 Features
 
-If you wish to contact me for anything you can get in touch at:
+### **Core Modules**
 
-- Twitter: https://twitter.com/Ignace_Maes
-- Personal Website: http://ignacemaes.com
+1. **Ticket Sales Management**
+   - Allows ticket booking, cancellation, and modification.
+   - Integrated with invoice generation for seamless operations.
+   - Supports customer database integration to retain passenger details.
+
+2. **Trip Scheduling and Management**
+   - Provides dynamic trip scheduling based on route, time, and availability.
+   - Includes tools for monitoring trip status (active, completed, or delayed).
+
+3. **Driver Management**
+   - Assigns drivers to trips based on schedules and availability.
+   - Tracks driver working hours to ensure compliance with labor laws.
+
+4. **Time Tracking**
+   - Logs trip start and end times, delays, and durations.
+   - Real-time updates for trip progress.
+
+5. **Invoice and Reporting System**
+   - Automatically generates invoices for customers.
+   - Includes detailed reporting tools for trip revenue, operational costs, and driver performance.
+
+### **Additional Features**
+
+- **Real-Time Notifications**: Alerts operators about upcoming trips or scheduling conflicts.
+- **Authentication and Authorization**: Role-based access control using Identity.
+- **Data Export**: Supports exporting reports in JSON or CSV formats.
+- **Asynchronous Operations**: Reduces wait times during critical operations like invoice generation.
 
 ---
 
-#### Images
+## ⚙️ Usage
 
-![alt tag](http://i.imgur.com/Ub0N9Xf.png)
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-repo/bus-ticket-automation.git
+   ```
 
-*A simple demo interface with MaterialSkin components.*
+2. **Set Up the Database**
+   - Install **Microsoft SQL Server**.
+   - Restore the `.bak` file provided in the project.
 
-![alt tag](http://i.imgur.com/eIAtRkc.png)
+3. **Configure the Applications**
+   - Update `appsettings.json` (Web Application).
+   - Update `App.config` (Desktop Application).
 
-*The MaterialSkin checkboxes.*
+4. **Run the Applications**
+   - Open the project in **Visual Studio**.
+   - Build the solution and run either the web or desktop application.
 
-![alt tag](http://i.imgur.com/sAPyvdH.png)
+---
 
-*The MaterialSkin radiobuttons.*
+## 🖼️ Output
 
-![alt tag](http://i.imgur.com/3Zpuv6x.png)
+### **Ticket Sales Interface**
+Allows operators to manage ticket bookings efficiently.
+![Ticket Sales](https://via.placeholder.com/800x400?text=Ticket+Sales+Interface)
 
-*The MaterialSkin ListView.*
+### **Trip Scheduling Interface**
+Dynamic scheduling tool for managing routes and times.
+![Trip Scheduling](https://via.placeholder.com/800x400?text=Trip+Scheduling+Interface)
 
-![alt tag](http://i.imgur.com/07MrJZQ.png)
+### **Driver Management Dashboard**
+Provides tools for assigning drivers and tracking their schedules.
+![Driver Management](https://via.placeholder.com/800x400?text=Driver+Management+Dashboard)
 
-*MaterialSkin using a custom color scheme.*
+---
+
+## 🛡️ License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
