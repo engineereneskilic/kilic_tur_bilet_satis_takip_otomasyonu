@@ -1,5 +1,6 @@
-
 # Bus Ticket Sales-Time Tracking Automation
+
+![**Pre-Accounting Automation (Image)**](logo-icon.jpg)  
 
 ## 📖 Table of Contents
 
